@@ -1,0 +1,65 @@
+/* === Neon Dashboard Theme Enhancements === */
+body {
+  background: radial-gradient(circle at 20% 20%, #051937 0%, #00010a 100%);
+  color: #e5e7eb;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Neon text glows */
+.text-glow-blue {
+  color: #00baff;
+  text-shadow: 0 0 8px #00baff, 0 0 16px #0093ff;
+}
+.text-glow-purple {
+  color: #b100ff;
+  text-shadow: 0 0 10px #b100ff, 0 0 20px #8500ff;
+}
+
+/* Glowing border panels */
+.neon-panel {
+  background: rgba(3, 23, 57, 0.8);
+  border: 1px solid rgba(0, 186, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 0 12px rgba(0, 186, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.neon-panel:hover {
+  border-color: #00baff;
+  box-shadow: 0 0 18px rgba(0, 186, 255, 0.4);
+}
+
+/* Grid highlight lines */
+.grid-line {
+  background: linear-gradient(to right, #00336611, #00baff22, #00336611);
+  height: 1px;
+}
+
+/* Animated glowing dots */
+.glow-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #00baff;
+  background-color: #00baff;
+  animation: glow-pulse 2s infinite alternate;
+}
+@keyframes glow-pulse {
+  from { opacity: 0.3; box-shadow: 0 0 4px #00baff; }
+  to   { opacity: 1; box-shadow: 0 0 12px #00baff; }
+}
+
+/* Footer pulse bar */
+.footer-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #00baff, #b100ff, #00baff);
+  background-size: 200% 100%;
+  animation: move-bar 4s linear infinite;
+  border-radius: 2px;
+  margin-top: 16px;
+}
+@keyframes move-bar {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
