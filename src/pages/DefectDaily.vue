@@ -8,6 +8,16 @@
 
     <div class="chart-card">
       <h2 class="chart-title">Defect % (Daily)</h2>
+
+        <!-- 🔹 Date Range Selector -->
+        <div class="date-controls">
+          <label>Start:</label>
+          <input type="date" v-model="startDate" @change="fetchData" />
+
+          <label>End:</label>
+          <input type="date" v-model="endDate" @change="fetchData" />
+        </div>
+
       <DefectPieChart :data="chartData" />
     </div>
 
@@ -35,10 +45,17 @@ import LeakHourlyChart from '@/components/LeakHourlyChart.vue'
 const chartData = ref([])
 const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
+const startDate = ref(new Date().toISOString().slice(0, 10))
+const endDate = ref(new Date().toISOString().slice(0, 10))
+
 const fetchData = async () => {
   const res = await axios.get(`${API}/api/leak_defects`, {
-    params: { start: '2025-10-01', end: '2025-10-31' },
+    params: { 
+      start: startDate.value, 
+      end: endDate.value 
+    },
   })
+
   const grouped = {}
   for (const row of res.data) {
     if (row.total_occurrences > 0) {
@@ -46,6 +63,7 @@ const fetchData = async () => {
         (grouped[row.defect_or_position] || 0) + row.total_occurrences
     }
   }
+
   chartData.value = Object.entries(grouped).map(([name, value]) => ({
     name,
     value,
@@ -53,6 +71,7 @@ const fetchData = async () => {
 }
 
 onMounted(fetchData)
+
 </script>
 
 <style scoped>

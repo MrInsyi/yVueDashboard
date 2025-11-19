@@ -96,3 +96,20 @@ body {
     0 0 30px #00eaff;
   transform: translateY(-3px); /* lift slightly */
 }
+
+.date-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.date-controls input {
+  background: #021027;
+  border: 1px solid #00baff;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 6px;
+}

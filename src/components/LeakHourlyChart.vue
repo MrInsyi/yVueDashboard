@@ -56,7 +56,7 @@ const chartInstance = ref(null)
 const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
 const stationId = ref(10)
-const targetDate = ref('2025-10-29')
+const targetDate =  ref(new Date().toISOString().slice(0, 10))                  //ref('2025-10-29')
 const isDemo = ref(false) // ✅ Default to real mode
 
 let refreshTimer = null

@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import StationTimeline from "../components/StationTimeline.vue";
+
 
 const stations = [
   {
